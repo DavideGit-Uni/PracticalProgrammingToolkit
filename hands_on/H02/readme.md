@@ -9,6 +9,47 @@ In this exercise we will try to estimate the value of $\pi$ numerically.
 
 Before starting to think algorithmically, we want to think scientifically (geometrically?): "what do we know about $\pi$?"
 
+## The Monte Carlo Method
+
+**Monte Carlo** methods are a broad class of algorithms that use repeated random sampling to obtain numerical results. The name comes from the Monte Carlo Casino in Monaco — the connection being randomness and probability.
+
+The core idea is simple: if you can express a quantity as the expected value of some random process, you can estimate it by simulating that process many times and averaging the outcomes.
+
+### Geometric intuition for $\pi$
+
+Consider a circle of radius $r = 1$ centered at the origin, inscribed inside a square of side $2$:
+
+- Area of the circle: $A_\text{circle} = \pi r^2 = \pi$
+- Area of the square: $A_\text{square} = (2r)^2 = 4$
+
+Now imagine throwing darts **uniformly at random** onto the square. The probability that a dart lands inside the circle is:
+
+$$P(\text{inside circle}) = \frac{A_\text{circle}}{A_\text{square}} = \frac{\pi}{4}$$
+
+If we throw $N$ darts in total and $M$ of them land inside the circle, then by the law of large numbers:
+
+$$\frac{M}{N} \approx \frac{\pi}{4} \qquad \Longrightarrow \qquad \pi \approx 4 \cdot \frac{M}{N}$$
+
+| ![Explanatory plot](monte_carlo_pi.png) |
+| --- |
+| Explanatory plot: Area of the square = 4, Area of the circle = $\pi$ |
+
+### How to check if a dart is inside the circle
+
+A point $(x, y)$ is inside the unit circle if and only if:
+
+$$x^2 + y^2 \leq 1$$
+
+So the algorithm is:
+1. Draw $x$ and $y$ independently and uniformly from $[-1, 1]$ (or equivalently from $[0, 1]$ using just the first quadrant).
+2. Check whether $x^2 + y^2 \leq 1$.
+3. Repeat $N$ times, count how many points satisfy the condition ($M$).
+4. Estimate $\pi \approx 4 M / N$.
+
+### Convergence and error
+
+The estimate improves as $N$ grows, but slowly: the statistical error scales as $1/\sqrt{N}$. This means that to gain one extra decimal digit of accuracy you need to increase $N$ by a factor of 100. This is a general feature of Monte Carlo methods — they are not the most efficient way to compute $\pi$, but they are a powerful illustration of the principle and scale well to high-dimensional problems where other methods fail.
+
 ## Deliverable:
 
 * A python script that computes $\pi$ and estimated the error on the computation.
