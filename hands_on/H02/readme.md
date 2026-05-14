@@ -50,12 +50,37 @@ So the algorithm is:
 
 The estimate improves as $N$ grows, but slowly: the statistical error scales as $1/\sqrt{N}$. This means that to gain one extra decimal digit of accuracy you need to increase $N$ by a factor of 100. This is a general feature of Monte Carlo methods — they are not the most efficient way to compute $\pi$, but they are a powerful illustration of the principle and scale well to high-dimensional problems where other methods fail.
 
-## Deliverable:
+## Deliverable
 
-* A python script that computes $\pi$ and estimated the error on the computation.
-* it would be great to use functions
-* it would be great to start by only using the standard python library
-* it would be also greater to make the script re-usable and executable with command line arguments
+### Tier 1 — Bachelor (required)
+
+Implement the Monte Carlo estimate of $\pi$ in a **Jupyter Notebook**:
+
+* Generate $N$ random points inside the square.
+* Count how many fall inside the circle and compute $\pi \approx 4M/N$.
+* Print or display the result for a few values of $N$ and comment on what you observe.
+
+> **Bonus (still in the notebook):** repeat the experiment $K$ times for the same $N$ and compute the **mean** and **standard deviation** of the estimates across realisations. How does the spread change as $N$ grows?
+
+---
+
+### Tier 2 — Master (required)
+
+Turn the notebook work into a **reusable Python script**:
+
+* Organise the logic into functions (e.g. one function that runs a single experiment, one that aggregates results).
+* Use only the Python standard library (`random`, `math`, `sys`, …).
+* Make the script executable from the command line, accepting $N$ (and optionally $K$) as arguments.
+* Estimate and report the **mean and standard deviation** of $\pi$ over $K$ realisations.
+
+---
+
+### Tier 3 — PhD (required)
+
+Everything in Tier 2, plus:
+
+* Study the convergence of the error as a function of $N$: produce a log-log plot of the standard deviation vs $N$ and verify the expected $1/\sqrt{N}$ scaling.
+* Discuss the result: what does this imply for the computational cost of gaining one extra decimal digit of accuracy?
 
 ## Hints
 
