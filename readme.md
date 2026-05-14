@@ -7,6 +7,7 @@ Ciao, the course is held in italian but the repo is in english.
   - [The collaborative project](hands_on/H01/exercise2_git)
   - [Evaluating $\pi$](hands_on/H02/)
 - [examples](examples) is for miscellanea and examples shown at lecture/hands-on which do not fit directly in the other positions
+  - How you should write a script which can also be used as module is detailed [here](examples/scripting_best_practices.py)
 
 ## Useful links:
 
